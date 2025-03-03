@@ -1,0 +1,12 @@
+node_modules
+.next
+instructions.md
+README.md
+.env
+.env.local
+.env.local
+.eslintrc.json
+.prettierrc
+
+
+
