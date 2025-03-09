@@ -1,11 +1,10 @@
 import { useAuthActions } from "@convex-dev/auth/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "sonner"
 import { useState } from "react";
 import { ConvexError } from "convex/values";
 import { INVALID_PASSWORD } from "@/convex/errors";
-import { cn } from "@/lib/utils";
 
 export function SignInWithPassword({
   provider,
@@ -22,7 +21,7 @@ export function SignInWithPassword({
 }) {
   const { signIn } = useAuthActions();
   const [flow, setFlow] = useState<"signIn" | "signUp">("signIn");
-  const { toast } = useToast();
+
   const [submitting, setSubmitting] = useState(false);
   return (
     <form
@@ -50,7 +49,7 @@ export function SignInWithPassword({
                   ? "Could not sign in, did you mean to sign up?"
                   : "Could not sign up, did you mean to sign in?";
             }
-            toast({ title: toastTitle, variant: "destructive" });
+            toast(toastTitle);
             setSubmitting(false);
           });
       }}

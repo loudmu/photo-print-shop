@@ -17,8 +17,8 @@ export const listNumbers = query({
   handler: async (ctx, args) => {
     //// Read the database as many times as you need here.
     //// See https://docs.convex.dev/database/reading-data.
-    const numbers = await ctx.db
-      .query("numbers")
+    const values = await ctx.db
+      .query("values")
       // Ordered by _creationTime, return most recent
       .order("desc")
       .take(args.count);
@@ -26,7 +26,7 @@ export const listNumbers = query({
     const user = userId === null ? null : await ctx.db.get(userId);
     return {
       viewer: user?.email ?? null,
-      numbers: numbers.reverse().map((number) => number.value),
+      numbers: values.reverse().map((value) => value.tempValue),
     };
   },
 });
@@ -44,7 +44,7 @@ export const addNumber = mutation({
     //// Mutations can also read from the database like queries.
     //// See https://docs.convex.dev/database/writing-data.
 
-    const id = await ctx.db.insert("numbers", { value: args.value });
+    const id = await ctx.db.insert("values", { tempValue: args.value });
 
     console.log("Added new document with id:", id);
     // Optionally, return a value from your mutation.

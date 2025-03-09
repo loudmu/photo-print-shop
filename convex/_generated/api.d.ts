@@ -14,8 +14,17 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as auth from "../auth.js";
+import type * as errors from "../errors.js";
+import type * as files from "../files.js";
 import type * as http from "../http.js";
 import type * as myFunctions from "../myFunctions.js";
+import type * as otp_ResendOTP from "../otp/ResendOTP.js";
+import type * as otp_TwilioOTP from "../otp/TwilioOTP.js";
+import type * as otp_TwilioSDK from "../otp/TwilioSDK.js";
+import type * as otp_TwilioVerify from "../otp/TwilioVerify.js";
+import type * as otp_VerificationCodeEmail from "../otp/VerificationCodeEmail.js";
+import type * as passwordReset_PasswordResetEmail from "../passwordReset/PasswordResetEmail.js";
+import type * as passwordReset_ResendOTPPasswordReset from "../passwordReset/ResendOTPPasswordReset.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -27,8 +36,17 @@ import type * as myFunctions from "../myFunctions.js";
  */
 declare const fullApi: ApiFromModules<{
   auth: typeof auth;
+  errors: typeof errors;
+  files: typeof files;
   http: typeof http;
   myFunctions: typeof myFunctions;
+  "otp/ResendOTP": typeof otp_ResendOTP;
+  "otp/TwilioOTP": typeof otp_TwilioOTP;
+  "otp/TwilioSDK": typeof otp_TwilioSDK;
+  "otp/TwilioVerify": typeof otp_TwilioVerify;
+  "otp/VerificationCodeEmail": typeof otp_VerificationCodeEmail;
+  "passwordReset/PasswordResetEmail": typeof passwordReset_PasswordResetEmail;
+  "passwordReset/ResendOTPPasswordReset": typeof passwordReset_ResendOTPPasswordReset;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,

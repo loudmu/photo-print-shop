@@ -1,6 +1,6 @@
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,7 +8,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu"
+
 import { PersonIcon } from "@radix-ui/react-icons";
 import { ReactNode } from "react";
 import { useAuthActions } from "@convex-dev/auth/react";
