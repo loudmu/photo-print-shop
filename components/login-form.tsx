@@ -13,6 +13,7 @@ import { useState } from "react"
 import { SignInWithGoogle } from "@/auth/oauth/SignInWithGoogle"
 import { SignInWithApple } from "@/auth/oauth/SignInWithApple"
 import { SignInMethodDivider } from "@/auth/SignInMethodDivider"
+import { SignInWithGitHub } from "@/auth/oauth/SignInWithGitHub"
 
 interface LoginFormProps extends Omit<React.ComponentProps<"div">, "onSubmit"> {
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void
@@ -25,9 +26,9 @@ export function LoginForm({
   defaultFlow = "signIn",
   ...props
 }: LoginFormProps) {
-  
+
   const [flow, setFlow] = useState<"signIn" | "signUp">(defaultFlow)
-  
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
@@ -36,8 +37,8 @@ export function LoginForm({
             {flow === "signIn" ? "Welcome back" : "Create an account"}
           </CardTitle>
           <CardDescription>
-            {flow === "signIn" 
-              ? "Login to access your photo printing dashboard" 
+            {flow === "signIn"
+              ? "Login to access your photo printing dashboard"
               : "Sign up to start printing your photos"}
           </CardDescription>
         </CardHeader>
@@ -47,10 +48,11 @@ export function LoginForm({
               <div className="flex flex-col gap-4">
                 <SignInWithApple />
                 <SignInWithGoogle />
+                <SignInWithGitHub />
               </div>
-              
+
               <SignInMethodDivider />
-              
+
               <div className="grid gap-6">
                 <div className="grid gap-3">
                   <Label htmlFor="email">Email</Label>
@@ -85,7 +87,7 @@ export function LoginForm({
                 {flow === "signIn" ? (
                   <>
                     Don&apos;t have an account?{" "}
-                    <button 
+                    <button
                       type="button"
                       onClick={() => setFlow("signUp")}
                       className="underline underline-offset-4"
@@ -110,6 +112,8 @@ export function LoginForm({
           </form>
         </CardContent>
       </Card>
+
+
       <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
         By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
         and <a href="#">Privacy Policy</a>.
