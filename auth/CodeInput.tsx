@@ -3,6 +3,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { cn } from "@/lib/utils";
 
 export function CodeInput({ length = 8 }: { length?: number }) {
   return (
